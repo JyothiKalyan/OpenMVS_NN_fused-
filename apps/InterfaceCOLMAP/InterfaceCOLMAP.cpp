@@ -863,6 +863,10 @@ bool ImportScene(const String& strFolder, const String& strOutFolder, Interface&
 				MVS::ViewsMap viewsMap;
 				const auto depthMM(std::minmax_element(colDepthMap.data_.cbegin(), colDepthMap.data_.cend()));
 				const MVS::Depth dMin(*depthMM.first), dMax(*depthMM.second);
+				//Edit by Jyothi start
+				//std::cout<<K<<"\n***\n";
+				//std::cout<<pose.R << pose.C ;
+				//Edit by Jyothi end
 				if (!ExportDepthDataRaw(strOutFolder+String::FormatString("depth%04u.dmap", image.ID), MAKE_PATH_FULL(strOutFolder, image.name), IDs, depthMap.size(), K, pose.R, pose.C, dMin, dMax, depthMap, normalMap, confMap, viewsMap))
 					return false;
 			}

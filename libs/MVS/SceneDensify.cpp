@@ -1935,31 +1935,38 @@ bool Scene::ComputeDepthMaps(DenseDepthMapData& data)
 
 
 for (IIndex idx: data.images) {
+	try{
+
 		const DepthData& depthData(data.depthMaps.arrDepthData[idx]);
 				if (!depthData.IsValid())
 					continue;
 				const String rawName(ComposeDepthFilePath(depthData.GetView().GetID(), "dmap"));
 				DepthData depthData_loaded;
 				depthData_loaded.Load(rawName, 1);
+				if (!depthData_loaded.IsValid())
+					continue;
 				const Image8U::Size sizeMap(depthData_loaded.depthMap.size());
 				
-					for (int i=0; i<sizeMap.height; ++i) {
-						for (int j=0; j<sizeMap.width; ++j) {
+					for (int i=0; i<10; ++i) {
+						for (int j=0; j<10; ++j) {
 							//std::cout<<depthData_loaded.depthMap(i,j);
-							//depthData_loaded.depthMap(i,j) = 4.5;
+							depthData_loaded.depthMap(i,j) = 4.5;
 							//std::cout<<depthData_loaded.depthMap(i,j)<<" ";
 							//std::cout<<i<<"***"<<j<<"\n";
 				}}
-				
-
 				depthData_loaded.Save(ComposeDepthFilePath(depthData.GetView().GetID(), data.nEstimationGeometricIter < 0 ? "dmap" : "geo.dmap"));
 				std::cout<<"saved!!!!!!"<<rawName<<"\n";
-	
+	    *(int*) 0 = 0;
+}
+catch (std::exception& e)
+{
+    std::cerr << "Exception caught : " << e.what() << std::endl;
+	continue;
+}
+
 	}
 	std::cout<<"***********************  Change started  *****************\n";
-
-
-std::cout<<"all changed code execution done";
+	std::cout<<"all changed code execution done";
 	return true;
 } // ComputeDepthMaps
 /*----------------------------------------------------------------*/
