@@ -1949,8 +1949,8 @@ for (IIndex idx: data.images) {
 				
 					for (int i=0; i<10; ++i) {
 						for (int j=0; j<10; ++j) {
-							//std::cout<<depthData_loaded.depthMap(i,j);
-							depthData_loaded.depthMap(i,j) = 4.5;
+							std::cout<<depthData_loaded.depthMap(i,j)<<"  ";
+							//depthData_loaded.depthMap(i,j) = 4.5;
 							//std::cout<<depthData_loaded.depthMap(i,j)<<" ";
 							//std::cout<<i<<"***"<<j<<"\n";
 				}}
