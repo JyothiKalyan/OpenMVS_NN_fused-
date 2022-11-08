@@ -1935,8 +1935,7 @@ bool Scene::ComputeDepthMaps(DenseDepthMapData& data)
 
 
 for (IIndex idx: data.images) {
-		std::cout<<"started0.\n";
-			const DepthData& depthData(data.depthMaps.arrDepthData[idx]);
+		const DepthData& depthData(data.depthMaps.arrDepthData[idx]);
 				if (!depthData.IsValid())
 					continue;
 				const String rawName(ComposeDepthFilePath(depthData.GetView().GetID(), "dmap"));
@@ -1946,7 +1945,8 @@ for (IIndex idx: data.images) {
 				
 					for (int i=0; i<sizeMap.height; ++i) {
 						for (int j=0; j<sizeMap.width; ++j) {
-							std::cout<<depthData_loaded.depthMap(i,j);
+							//std::cout<<depthData_loaded.depthMap(i,j);
+							//depthData_loaded.depthMap(i,j) = 4.5;
 							//std::cout<<depthData_loaded.depthMap(i,j)<<" ";
 							//std::cout<<i<<"***"<<j<<"\n";
 				}}
