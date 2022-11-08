@@ -1936,7 +1936,7 @@ bool Scene::ComputeDepthMaps(DenseDepthMapData& data)
 
 for (IIndex idx: data.images) {
 	try{
-
+std::cout <<"Inblock\n";
 		const DepthData& depthData(data.depthMaps.arrDepthData[idx]);
 				if (!depthData.IsValid())
 					continue;
