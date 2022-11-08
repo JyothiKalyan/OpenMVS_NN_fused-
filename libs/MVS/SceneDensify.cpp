@@ -1943,8 +1943,7 @@ std::cout <<"Inblock\n";
 				const String rawName(ComposeDepthFilePath(depthData.GetView().GetID(), "dmap"));
 				DepthData depthData_loaded;
 				depthData_loaded.Load(rawName, 1);
-				if (!depthData_loaded.IsValid())
-					continue;
+				
 				const Image8U::Size sizeMap(depthData_loaded.depthMap.size());
 				
 					for (int i=0; i<10; ++i) {
