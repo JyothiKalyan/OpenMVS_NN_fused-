@@ -1956,16 +1956,16 @@ for (IIndex idx: data.images) {
 				}}
 				depthData_loaded.Save(ComposeDepthFilePath(depthData.GetView().GetID(), data.nEstimationGeometricIter < 0 ? "dmap" : "geo.dmap"));
 				std::cout<<"saved!!!!!!"<<rawName<<"\n";
-	    *(int*) 0 = 0;
+	   
 }
 catch (std::exception& e)
 {
-    std::cerr << "Exception caught : " << e.what() << std::endl;
+    std::cout << "Exception caught : " << e.what() << std::endl;
 	continue;
 }
 
 	}
-	std::cout<<"***********************  Change started  *****************\n";
+	std::cout<<"***********************  Change started Scene Densify  *****************\n";
 	std::cout<<"all changed code execution done";
 	return true;
 } // ComputeDepthMaps
