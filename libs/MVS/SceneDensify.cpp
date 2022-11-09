@@ -1967,6 +1967,34 @@ catch (std::exception& e)
 	std::system("//datasets//project//saveexcelasdmap \'//datasets//project//opensfm//undistorted//openmvs//depthmaps_csv\'  \'//datasets//project//opensfm//undistorted//openmvs//depthmaps\' \'//datasets//project//corrected_depthmaps_csv\'");
 	*/
 
+<<<<<<< HEAD
+=======
+
+for (IIndex idx: data.images) {
+		std::cout<<"started0.\n";
+			const DepthData& depthData(data.depthMaps.arrDepthData[idx]);
+				if (!depthData.IsValid())
+					continue;
+				const String rawName(ComposeDepthFilePath(depthData.GetView().GetID(), "dmap"));
+				DepthData depthData_loaded;
+				depthData_loaded.Load(rawName, 1);
+				const Image8U::Size sizeMap(depthData_loaded.depthMap.size());
+				
+				/*	for (int i=0; i<sizeMap.height; ++i) {
+						for (int j=0; j<sizeMap.width; ++j) {
+							std::cout<<i<<"***"<<j<<"\n";
+				}}*/
+				
+
+				//depthData_loaded.Save(ComposeDepthFilePath(depthData.GetView().GetID(), data.nEstimationGeometricIter < 0 ? "dmap" : "geo.dmap"));
+				std::cout<<"saved!!!!!!"<<rawName<<"\n";
+	
+	}
+	std::cout<<"***********************  Change started  *****************\n";
+
+
+std::cout<<"all changed code execution done";
+>>>>>>> parent of c03487e (depth map iterating)
 	return true;
 } // ComputeDepthMaps
 /*----------------------------------------------------------------*/
