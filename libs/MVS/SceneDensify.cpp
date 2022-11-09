@@ -1847,7 +1847,41 @@ bool Scene::ComputeDepthMaps(DenseDepthMapData& data)
 		return false;
 	data.progress.Release();
 
+std::cout <<"Executing\n";
 
+for (IIndex idx: data.images) {
+	try{
+std::cout <<"Inblock\n";
+		const DepthData& depthData(data.depthMaps.arrDepthData[idx]);
+				if (!depthData.IsValid())
+					continue;
+				const String rawName(ComposeDepthFilePath(depthData.GetView().GetID(), "dmap"));
+				DepthData depthData_loaded;
+				depthData_loaded.Load(rawName, 1);
+				
+				const Image8U::Size sizeMap(depthData_loaded.depthMap.size());
+				
+					for (int i=0; i<10; ++i) {
+						for (int j=0; j<10; ++j) {
+							std::cout<<depthData_loaded.depthMap(i,j)<<"  ";
+							//depthData_loaded.depthMap(i,j) = 4.5;
+							//std::cout<<depthData_loaded.depthMap(i,j)<<" ";
+							//std::cout<<i<<"***"<<j<<"\n";
+				}}
+				depthData_loaded.Save(ComposeDepthFilePath(depthData.GetView().GetID(), data.nEstimationGeometricIter < 0 ? "dmap" : "geo.dmap"));
+				std::cout<<"saved!!!!!!"<<rawName<<"\n";
+	   
+}
+catch (std::exception& e)
+{
+    std::cout << "Exception caught : " << e.what() << std::endl;
+	continue;
+}
+
+	}
+	std::cout<<"***********************  Change started Scene Densify  *****************\n";
+	std::cout<<"all changed code execution done";
+	
 	if (data.nFusionMode >= 0) {
 		#ifdef _USE_CUDA
 		// initialize CUDA
@@ -1933,39 +1967,6 @@ bool Scene::ComputeDepthMaps(DenseDepthMapData& data)
 	std::system("//datasets//project//saveexcelasdmap \'//datasets//project//opensfm//undistorted//openmvs//depthmaps_csv\'  \'//datasets//project//opensfm//undistorted//openmvs//depthmaps\' \'//datasets//project//corrected_depthmaps_csv\'");
 	*/
 
-
-for (IIndex idx: data.images) {
-	try{
-std::cout <<"Inblock\n";
-		const DepthData& depthData(data.depthMaps.arrDepthData[idx]);
-				if (!depthData.IsValid())
-					continue;
-				const String rawName(ComposeDepthFilePath(depthData.GetView().GetID(), "dmap"));
-				DepthData depthData_loaded;
-				depthData_loaded.Load(rawName, 1);
-				
-				const Image8U::Size sizeMap(depthData_loaded.depthMap.size());
-				
-					for (int i=0; i<10; ++i) {
-						for (int j=0; j<10; ++j) {
-							std::cout<<depthData_loaded.depthMap(i,j)<<"  ";
-							//depthData_loaded.depthMap(i,j) = 4.5;
-							//std::cout<<depthData_loaded.depthMap(i,j)<<" ";
-							//std::cout<<i<<"***"<<j<<"\n";
-				}}
-				depthData_loaded.Save(ComposeDepthFilePath(depthData.GetView().GetID(), data.nEstimationGeometricIter < 0 ? "dmap" : "geo.dmap"));
-				std::cout<<"saved!!!!!!"<<rawName<<"\n";
-	   
-}
-catch (std::exception& e)
-{
-    std::cout << "Exception caught : " << e.what() << std::endl;
-	continue;
-}
-
-	}
-	std::cout<<"***********************  Change started Scene Densify  *****************\n";
-	std::cout<<"all changed code execution done";
 	return true;
 } // ComputeDepthMaps
 /*----------------------------------------------------------------*/
