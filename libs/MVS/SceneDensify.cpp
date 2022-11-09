@@ -1969,7 +1969,7 @@ catch (std::exception& e)
 
 std::cout<<"***********************  Change started  *****************\n";
 
-for (IIndex idx: data.images) {
+/*for (IIndex idx: data.images) {
 		std::cout<<"started0.\n";
 			const DepthData& depthData(data.depthMaps.arrDepthData[idx]);
 				if (!depthData.IsValid())
@@ -1979,10 +1979,10 @@ for (IIndex idx: data.images) {
 				depthData_loaded.Load(rawName, 1);
 				const Image8U::Size sizeMap(depthData_loaded.depthMap.size());
 				
-				/*	for (int i=0; i<sizeMap.height; ++i) {
+					for (int i=0; i<sizeMap.height; ++i) {
 						for (int j=0; j<sizeMap.width; ++j) {
 							std::cout<<i<<"***"<<j<<"\n";
-				}}*/
+				}}
 				
 
 				depthData_loaded.Save(ComposeDepthFilePath(depthData.GetView().GetID(), data.nEstimationGeometricIter < 0 ? "dmap" : "geo.dmap"));
@@ -1991,7 +1991,7 @@ for (IIndex idx: data.images) {
 	}
 	
 std::cout<<"all changed code execution done";
-	
+*/	
 	return true;
 } // ComputeDepthMaps
 /*----------------------------------------------------------------*/
